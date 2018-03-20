@@ -1,3 +1,5 @@
+Based on the work of: https://github.com/GuildEducationInc/docker-amazon-redshift
+
 # Docker Amazon Redshift
 
 This is an unofficial implementation of Amazon Redshift inside a Docker container. At this time, the container is merely PostgreSQL 8.0.2 running  on port 5432 inside the container. No other changes have been made to make it more closely match the behavior of Redshift.
@@ -7,17 +9,17 @@ There are two variants: one based on Debian Jessie and another based on Alpine 3
 ## How to use the image
 
 ### Running
-`docker run -d --name my-postgresql802 CGrasset/postgresql8.0.2`
+`docker run -d --name my-postgresql802 cgrasset/postgresql8.0.2`
 
 Port 5432 is set via an `EXPOSE` command so it should be available to linked containers. Optionally, you can map it to the host:
 
-`docker run -d -p 5432:5432 --name my-postgresql802 CGrasset/postgresql8.0.2`
+`docker run -d -p 5432:5432 --name my-postgresql802 cgrasset/postgresql8.0.2`
 
 ### Persisting Data
 
 In order to have data persist between container runs, map the `PGDATA` directory to a volume. This variable is defaulted to `/var/lib/postgresql/data`:
 
-`docker run -d -p 5432:5432 -v /path/on/host:/var/lib/postgresql/data --name my-postgresql802 CGrasset/postgresql8.0.2`
+`docker run -d -p 5432:5432 -v /path/on/host:/var/lib/postgresql/data --name my-postgresql802 cgrasset/postgresql8.0.2`
 
 `initdb` is run on the `PGDATA` directory automatically on container start
 
@@ -25,7 +27,7 @@ In order to have data persist between container runs, map the `PGDATA` directory
 
 It is recommended to set a password for the default postgres user:
 
-`docker run -d -p 5432:5432 -v /path/on/host:/var/lib/postgresql/data -e POSTGRES_PASSWORD=your_password --name my-postgresql802 CGrasset/postgresql8.0.2`
+`docker run -d -p 5432:5432 -v /path/on/host:/var/lib/postgresql/data -e POSTGRES_PASSWORD=your_password --name my-postgresql802 cgrasset/postgresql8.0.2`
 
 ## Environment Variables
 
