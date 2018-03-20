@@ -21,7 +21,7 @@ RUN set -x \
 # Install
 # make the "en_US.UTF-8" locale so postgres will be utf-8 enabled by default
 ENV LANG en_US.utf8
-ENV PGPORT 5439
+ENV PGPORT 5432
 ENV PGDATA /var/lib/postgresql/data
 ENV PATH /usr/local/pgsql/bin:$PATH
 ENV PG_MAJOR 8.0.2
@@ -68,5 +68,5 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-EXPOSE 5439
+EXPOSE $PGPORT
 CMD ["postmaster"]
