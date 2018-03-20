@@ -24,7 +24,7 @@ RUN mkdir /docker-entrypoint-initdb.d
 ENV PG_MAJOR 8.0.2
 ENV PG_VERSION 8.0.2
 ENV PG_MD5 62ca2786a4856c492fbdcd23bedb48c6
-ENV PGPORT=5439
+ENV PGPORT=5432
 
 RUN set -ex \
 	\
@@ -141,5 +141,5 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-EXPOSE 5439
+EXPOSE $PGPORT
 CMD ["postmaster"]
